@@ -5,4 +5,6 @@ export class CreateSoftSkillDto {
     name: string
     @IsString()
     content: string
+    @IsString()
+    icon: string
 }

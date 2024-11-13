@@ -17,9 +17,8 @@ export class ResumeService extends PrismaClient implements OnModuleInit {
   }
 
   findOne() {
-    return this.resume.findFirst;
+    return this.resume.findFirst()
   }
-
   remove(id: string) {
     return this.resume.delete({where: {id}});
   }

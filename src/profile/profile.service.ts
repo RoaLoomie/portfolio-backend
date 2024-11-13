@@ -22,6 +22,8 @@ export class ProfileService extends PrismaClient implements OnModuleInit{
   }
 
   remove(id: string) {
-    return this.profile.delete;
+    return this.profile.delete({
+      where: {id},
+    });
   }
 }

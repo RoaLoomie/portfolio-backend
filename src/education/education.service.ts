@@ -16,7 +16,7 @@ export class EducationService extends PrismaClient implements OnModuleInit{
   }
 
   findAll() {
-    return this.education.findMany;
+    return this.education.findMany();
   }
 
   update(id: string, updateEducationDto: UpdateEducationDto) {

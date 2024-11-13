@@ -16,15 +16,14 @@ export class ProjectService extends PrismaClient implements OnModuleInit{
     await this.$connect();
   }
   async create(createProjectDto: CreateProjectDto, image: Express.Multer.File) {
-    console.log({createProjectDto, image})
-    const key = v4();
-    const project = this.project.create({
+    const project =await this.project.create({
       data:{
         ...createProjectDto,
-        image: key,
+        image: v4(),
       },
     });
-      await this.uploaderService.upload(image, key)
+      await this.uploaderService.upload(image, project.image)
+      return project
   }
 
   async findAll() {
@@ -33,7 +32,7 @@ export class ProjectService extends PrismaClient implements OnModuleInit{
         createAt: 'desc',
       },
     });
-    return Promise.all(projects.map(async project =>{
+    return await Promise.all(projects.map(async project =>{
       const url = await this.uploaderService.getSignedUrl(project.image)
       return {...project, image: url}
     })

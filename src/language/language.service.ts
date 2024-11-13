@@ -16,7 +16,7 @@ export class LanguageService extends PrismaClient implements OnModuleInit{
   }
 
   findAll() {
-    return this.language.findMany;
+    return this.language.findMany();
   }
 
   remove(id: string) {

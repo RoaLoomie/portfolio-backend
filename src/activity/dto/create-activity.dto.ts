@@ -5,4 +5,6 @@ export class CreateActivityDto {
     name: string
     @IsString()
     content: string
+    @IsString()
+    icon: string
 }
